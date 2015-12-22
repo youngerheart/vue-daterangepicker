@@ -1,0 +1,40 @@
+{
+  "name": "vue-daterangepicker",
+  "version": "0.0.1",
+  "description": "a simple daterangepicker for vue",
+  "main": "dist/vue-daterangepicker.min.js",
+  "scripts": {
+    "test": "make test",
+    "build": "webpack --progress --hide-modules",
+    "watch": "NODE_ENV=watch webpack --progress --hide-modules --watch",
+    "deploy": "NODE_ENV=production webpack --progress --hide-modules --output-public-path /dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/youngerheart/vue-daterangepicker.git"
+  },
+  "files": [
+    "README.md",
+    "dist/"
+  ],
+  "keywords": [
+    "daterangepicker",
+    "vue"
+  ],
+  "author": "youngerheart",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/youngerheart/vue-daterangepicker/issues"
+  },
+  "homepage": "https://github.com/youngerheart/vue-daterangepicker",
+  "devDependencies": {
+    "date-range-picker": "^0.2.1",
+    "babel-core": "^6.1.2",
+    "babel-loader": "^6.1.0",
+    "eslint-loader": "1.1.1",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-runtime": "6.2.0",
+    "webpack": "^1.12.2",
+    "express": "^4.10.0"
+  }
+}
