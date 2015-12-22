@@ -18,11 +18,11 @@ module.exports = {
   },
   module: {
     preLoaders: [
-      {test: /\.js$/, exclude: '/node_modules', loader: 'eslint'}
+      {test: /\.js$/, exclude: [/node_modules/, /dist/], loader: 'eslint'}
     ],
     loaders: [
       {test: /\.js$/, exclude: /node_modules/, loader: 'babel'},
-      {test: /\.css$/, exclude: /node_modules/, loader: 'style!css!sass!'}
+      {test: /\.vue$/, loader: 'vue'}
     ]
   }
 };
