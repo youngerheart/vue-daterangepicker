@@ -15,7 +15,8 @@
   },
   "files": [
     "README.md",
-    "dist/"
+    "dist/vue-daterangepicker.js",
+    "dist/vue-daterangepicker.min.js"
   ],
   "keywords": [
     "daterangepicker",
@@ -27,11 +28,16 @@
     "url": "https://github.com/youngerheart/vue-daterangepicker/issues"
   },
   "homepage": "https://github.com/youngerheart/vue-daterangepicker",
+  "peerDependencies": {
+    "vue": "^1.0.8"
+  },
   "devDependencies": {
     "date-range-picker": "^0.2.1",
     "babel-core": "^6.1.2",
     "babel-loader": "^6.1.0",
     "eslint-loader": "1.1.1",
+    "vue-loader": "7.1.1",
+    "css-loader" : "^0.21.0",
     "babel-preset-es2015": "^6.1.18",
     "babel-runtime": "6.2.0",
     "webpack": "^1.12.2",
