@@ -28,9 +28,6 @@
     "url": "https://github.com/youngerheart/vue-daterangepicker/issues"
   },
   "homepage": "https://github.com/youngerheart/vue-daterangepicker",
-  "peerDependencies": {
-    "vue": "^1.0.8"
-  },
   "devDependencies": {
     "date-range-picker": "^0.2.1",
     "babel-core": "^6.1.2",
