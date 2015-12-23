@@ -3,30 +3,212 @@
   <head>
     <meta charset="utf-8">
     <title>vue-daterangepicker demo</title>
+    <style>
+      html, body {margin: 0;}
+      html {font-family: "Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif; overflow-x: hidden; margin-top: 20px;}
+      .transform {transform:rotate(45deg); -ms-transform:rotate(45deg); -moz-transform:rotate(45deg);-webkit-transform:rotate(45deg);-o-transform:rotate(45deg);}
+      .forkme {text-decoration: none; position: fixed; right: -60px; top: 40px; z-index: 999; line-height: 40px; background-color: #56ad35; color: #fff; width: 240px; font-size: 18px; font-weight: bold; text-align: center; box-shadow: 0 0 5px #888888; z-index: 3;}
+      .header {color: #cb3837;line-height: 50px; position: fixed; top: 0px; left: 0px; right: 0px; z-index: 2; background: rgba(255, 255, 255, .9); box-shadow: 0 0 15px 3px rgba(0, 0, 0, .05);}
+      .header-title {margin-left: 50px; font-size: 30px;}
+      .header-link {color: #cb3837; margin-left: 30px; text-decoration: none; font-size: 20px;}
+      .header-link:hover {color: #ffa5a4}
+      .item {position: relative; margin-top: 55px; padding: 20px; background-color: #fcfcfc; border: #eee solid; border-width: 1px 0;}
+      .item-title {position: relative; margin-bottom: 20px; padding-left: 30px;}
+      .item-title-text {font-size: 24px;}
+      .item-title-value {line-height: 36px; border-radius: 3px; color: #fff; font-weight: bold; background-color: #ed5434; display: inline-block; padding: 0 10px;margin-left: 10px;}
+      .item-tag {padding: 0 0 30px 30px; font-size: 20px; width: 300px;}
+      .item-desc {overflow: auto; position: absolute; top: 70px; left: 400px; right: 20px; vertical-align: top; padding: 10px; border: 3px #fff solid; color: #fff; background-color: #333;}
+      .item-desc-fix {top: 20px;}
+      .item-desc pre {font-family: Menlo,Monaco,Consolas,"Courier New",monospace;}
+      .drp .drp-day-number.focus {color: #fff; background-color: #ed5434;}
+      .drp .drp-day-number.active {color: #fff; background-color: #8cace2;}
+      .item-title-settimebtn {height: 30px; font-size: 20px; color: #fff; font-weight: bold; cursor: pointer; background-color: #8cace2; border: 0; margin-left: 20px;}
+    </style>
   </head>
   <body>
-    <hehe-daterangepicker
-      lang="zh-cn"
-      :number-of-calendars="1"
-      type="single"
-      :time="true"
-      :date="date"
-      :max-date="moment()"
-      :on-select="onSelect"
-    ></hehe-daterangepicker>
+      <a target="_blank" href="https://github.com/youngerheart/daterangepicker" title="Forkme on github" class="forkme transform">Forkme on github</a>
+    <div class="header">
+      <span class="header-title">vue-daterangepicker demo</span>
+      <a class="header-link" href="#top">css guide</a>
+      <a class="header-link" href="#config">js config</a>
+    </div>
+    <div class="item">
+      <div class='item-tag'>You should add basic stylesheet first, for focus (such as orange) and active (such as blue) items.</div>
+      <div class="item-desc item-desc-fix">
+        <pre>
+.drp .drp-day-number.focus {color: #fff; background-color: #ed5434;}
+.drp .drp-day-number.active {color: #fff; background-color: #8cace2;}
+        </pre>
+      </div>
+    </div>
+    <div class="item">
+      <div class='item-tag'>You should init the VueDateRangePicker (with a prefix), and set initial props && methods<br><br><br><br><br><br><br></div>
+      <div class="item-desc item-desc-fix">
+        <pre>
+VueDateRangePicker(Vue, 'v');
+new Vue({el: '#el',data: {
+  moment: moment,
+  range1: moment.range(['2015-10-01 23:33', '2015-10-04']),
+  range2: moment.range(['2015-10-03', '2015-10-07']),
+  date: moment()
+}, methods: {
+  onSelect1: function(date) {this.$els.singlevalue.innerHTML = date.format('YYYY-MM-DD HH:mm');},
+  setSingleTime: function() {this.date = moment();},
+}});
+        </pre>
+      </div>
+    </div>
+    <div id="config"></div>
+    <div class="item">
+      <div class="item-title">
+        <span class='item-title-text'>date-single-picker</span>
+        <span v-el:singlevalue id='drp-single-value' class="item-title-value"></span>
+        <button id="setsingletime" class="item-title-settimebtn" @click="setSingleTime()">set time</button>
+        <button id="clearsingletime" class="item-title-settimebtn" @click="clearSingleTime()">clear</button>
+      </div>
+      <div id="drp-single-shortcuts"></div>
+      <div id="drp-single-dimension"></div>
+      <v-daterangepicker
+        v-ref:drpsingle
+        lang="zh-cn"
+        :number-of-calendars="1"
+        type="single"
+        :time="true"
+        :date="date"
+        :max-date="moment()"
+        :on-select="onSelect1"
+      ></v-daterangepicker>
+      <div class="item-desc">
+        <pre>
+&lt;v-daterangepicker
+  v-ref="drpsingle"
+  lang="zh-cn"
+  :number-of-calendars="1"
+  type="single"
+  :time="true"
+  :date="date"
+  :max-date="moment()"
+  :on-select="onSelect1"
+&gt;&lt;/v-daterangepicker&gt;
+        </pre>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-title">
+        <span class='item-title-text'>date-range-picker</span>
+        <span v-el:rangevalue id="drp-range-value" class="item-title-value"></span>
+        <button id="setRangetime" class="item-title-settimebtn" @click="setRangeTime()">set time</button>
+        <button id="clearrangetime" class="item-title-settimebtn" @click="clearRangeTime()">clear</button>
+      </div>
+      <div id="drp-range-shortcuts"></div>
+      <div id="drp-range-dimension"></div>
+      <v-daterangepicker
+        v-ref:drprange
+        lang="en"
+        :number-of-calendars="2"
+        type="range"
+        :time="true"
+        :range="range1"
+        :max-date="moment()"
+        :on-select="onSelect2"
+      ></v-daterangepicker>
+      <div class="item-desc">
+        <pre>
+&lt;v-daterangepicker
+  v-ref="drprange"
+  lang="en"
+  :number-of-calendars="2"
+  type="range"
+  :time="true"
+  :range="range1"
+  :max-date="moment()"
+  :on-select="onSelect2"
+&gt;&lt;/v-daterangepicker&gt;
+        </pre>
+      </div>
+    </div>
+    <div class="item">
+      <div class="item-title">
+        <span class='item-title-text'>date-terminal-picker</span>
+        <span v-el:terminalvalue id='drp-terminal-value' class="item-title-value"></span>
+        <button id="setTerminaltime" class="item-title-settimebtn" @click="setTerminalTime()">set time</button>
+        <button id="clearterminalime" class="item-title-settimebtn" @click="clearTerminalTime()">clear</button>
+      </div>
+      <div id="drp-terminal-shortcuts"></div>
+      <div id="drp-terminal-dimension"></div>
+      <v-daterangepicker
+        v-ref:drpterminal
+        lang="ja"
+        :number-of-calendars="3"
+        type="terminal"
+        :time="true"
+        :range="range2"
+        :max-date="moment()"
+        :on-select="onSelect3"
+      ></v-daterangepicker>
+      <div class="item-desc">
+        <pre>
+&lt;v-daterangepicker
+  v-ref:drpterminal
+  lang="ja"
+  :number-of-calendars="3"
+  type="terminal"
+  :time="true"
+  :range="range2"
+  :max-date="moment()"
+  :on-select="onSelect3"
+&gt;&lt;/v-daterangepicker&gt;
+        </pre>
+      </div>
+    </div>
+  </body>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment-with-locales.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment-range/2.0.3/moment-range.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.12/vue.min.js"></script>
-  <script type="text/javascript" src="dist/vue-daterangepicker.min.js"></script>
+  <script type="text/javascript" src="dist/vue-daterangepicker.js"></script>
   <script type="text/javascript">
-    VueDateRangePicker(Vue, 'hehe');
+    VueDateRangePicker(Vue, 'v');
     new Vue({
       el: 'body',
       data: {
-        date: moment(),
-        onSelect: function(date) {
-          console.log(date);
+        moment: moment,
+        date: moment('2015-10-01 23:33'),
+        range1: moment.range(['2015-10-01 23:33', '2015-10-04']),
+        range2: moment.range(['2015-10-03', '2015-10-07']),
+      },
+      methods: {
+        onSelect1: function(date) {
+          this.$els.singlevalue.innerHTML = date.format('YYYY-MM-DD HH:mm');
+        },
+        onSelect2: function(range) {
+          this.$els.rangevalue.innerHTML = range.start.format('YYYY-MM-DD HH:mm') + ' ~ ' + range.end.format('YYYY-MM-DD HH:mm');
+        },
+        onSelect3: function(range) {
+          this.$els.terminalvalue.innerHTML = range.start.format('YYYY-MM-DD HH:mm') + ' ~ ' + range.end.format('YYYY-MM-DD HH:mm');
+        },
+        setSingleTime: function() {
+          this.date = moment();
+        },
+        clearSingleTime: function() {
+          this.date = null;
+        },
+        setRangeTime: function() {
+          this.range1 = moment.range(['2015-10-11 11:11', '2015-11-11 23:33']);
+        },
+        clearRangeTime: function() {
+          this.range1 = null;
+        },
+        setTerminalTime: function() {
+          this.range2 = moment.range(['2015-10-11 11:11', '2015-11-11 23:33']);
+        },
+        clearTerminalTime: function() {
+          this.range2 = null;
         }
+      },
+      ready() {
+        this.$els.singlevalue.innerHTML = this.date.format('YYYY-MM-DD HH:mm');
+        this.$els.rangevalue.innerHTML = this.range1.start.format('YYYY-MM-DD HH:mm') + ' ~ ' + this.range1.end.format('YYYY-MM-DD HH:mm');
+        this.$els.terminalvalue.innerHTML = this.range2.start.format('YYYY-MM-DD HH:mm') + ' ~ ' + this.range2.end.format('YYYY-MM-DD HH:mm');
       }
     });
   </script>
