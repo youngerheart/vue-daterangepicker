@@ -54,6 +54,7 @@ new Vue({el: '#el',data: {
 }, methods: {
   onSelect1: function(date) {this.$els.singlevalue.innerHTML = date.format('YYYY-MM-DD HH:mm');},
   setSingleTime: function() {this.date = moment();},
+  clearSingleTime: function() {this.date = null;}
 }});
         </pre>
       </div>
