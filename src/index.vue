@@ -4,29 +4,23 @@
 
 <script type="text/ecmascript-6">
   module.exports = {
-    props: {
-      lang: {type: String},
-      numberOfCalendars: {type: Number},
-      type: {type: String},
-      time: {type: Boolean},
-      date: {type: Object},
-      range: {type: Object},
-      maxDate: {type: Object},
-      onSelect: {type: Object}
-    },
+    props: ['lang', 'numberOfCalendars', 'type', 'time', 'date', 'range', 'minDate', 'maxDate', 'onSelect'],
     data() {
       return {
         drp: null
       };
     },
     watch: {
-      'type'(value) {
-        if(value === 'single') {
-          if(this.date) this.drp.set('date', this.date);
+      'date'(value) {
+        console.log(value);
+        if(this.type === 'single') {
+          if(value) this.drp.set('date', value);
           else this.drp.clear();
         }
-        else if (value === 'range' || value === 'terminal') {
-          if(this.range) this.drp.set('range', this.range);
+      },
+      'range'(value) {
+        if(this.type === 'range' || this.type === 'terminal') {
+          if(value) this.drp.set('range', value);
           else this.drp.clear();
         }
       }
