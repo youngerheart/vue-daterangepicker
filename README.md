@@ -47,6 +47,8 @@ Include js in `/dist` by tag , you can also require js by `require('date-range-p
         :date="date"
         :max-date="moment()"
         :on-select="onSelect1"
+        :shortcuts="{el: 'shortcuts', btns: [...]}"
+        :dimension="{el: 'dimension'}",
       ></v-daterangepicker>
 
 ## Develop
