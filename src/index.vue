@@ -29,15 +29,16 @@
       var config = {lang, numberOfCalendars, type, time, date, range, onSelect, maxDate, minDate};
       if(shortcuts && shortcuts.el) {
         config.shortcuts = {
-          el: this.$parent.$els[shortcuts.el],
-          btns: shortcuts.btns
+          el: this.$parent.$els[shortcuts.el]
         };
+        if(shortcuts.btns) config.shortcuts.btns = shortcuts.btns;
       }
       if(dimension && dimension.el) {
         config.dimension = {
           el: this.$parent.$els[dimension.el],
           btns: dimension.btns
         };
+        if(dimension.btns) config.dimension.btns = dimension.btns;
       }
       var DateRangePicker = require('date-range-picker');
       this.drp = new DateRangePicker(this.$els.drp, config);
