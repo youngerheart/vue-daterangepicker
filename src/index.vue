@@ -4,7 +4,7 @@
 
 <script type="text/ecmascript-6">
   module.exports = {
-    props: ['lang', 'numberOfCalendars', 'type', 'time', 'date', 'range', 'minDate', 'maxDate', 'onSelect', 'shortcuts', 'dimension'],
+    props: ['lang', 'numberOfCalendars', 'type', 'time', 'date', 'range', 'minDate', 'maxDate', 'onSelect', 'shortcuts', 'dimension', 'calendarType'],
     data() {
       return {
         drp: null
@@ -25,8 +25,8 @@
       }
     },
     ready() {
-      var {lang, numberOfCalendars, type, time, date, range, onSelect, maxDate, minDate, shortcuts, dimension} = this;
-      var config = {lang, numberOfCalendars, type, time, date, range, onSelect, maxDate, minDate};
+      var {lang, numberOfCalendars, type, time, date, range, onSelect, maxDate, minDate, shortcuts, dimension, calendarType} = this;
+      var config = {lang, numberOfCalendars, type, time, date, range, onSelect, maxDate, minDate, calendarType};
       if(shortcuts && shortcuts.el) {
         config.shortcuts = {
           el: this.$parent.$els[shortcuts.el]

@@ -42,6 +42,7 @@ Include js in `/dist` by tag , you can also require js by `require('date-range-p
         v-ref="drpsingle"
         lang="zh-cn"
         :number-of-calendars="1"
+        calendar-type="date"
         type="single"
         :time="true"
         :date="date"
