@@ -73,6 +73,7 @@ new Vue({el: '#el',data: {
         v-ref:drpsingle
         lang="zh-cn"
         :number-of-calendars="1"
+        :calendar-type.sync="ctype"
         type="single"
         :time="true"
         :date="date"
@@ -87,6 +88,7 @@ new Vue({el: '#el',data: {
   v-ref="drpsingle"
   lang="zh-cn"
   :number-of-calendars="1"
+  :calendar-type.sync="ctype"
   type="single"
   :time="true"
   :date="date"
@@ -172,13 +174,14 @@ new Vue({el: '#el',data: {
   <script type="text/javascript" src="http://cdn.bootcss.com/moment.js/2.10.6/moment-with-locales.min.js"></script>
   <script type="text/javascript" src="http://cdn.bootcss.com/moment-range/2.1.0/moment-range.min.js"></script>
   <script type="text/javascript" src="http://cdn.bootcss.com/vue/1.0.13/vue.min.js"></script>
-  <script type="text/javascript" src="dist/vue-daterangepicker.min.js"></script>
+  <script type="text/javascript" src="dist/vue-daterangepicker.js"></script>
   <script type="text/javascript">
     VueDateRangePicker(Vue, 'v');
     new Vue({
       el: 'body',
       data: {
         moment: moment,
+        ctype: 'day',
         date: moment('2015-10-01 23:33'),
         range1: moment.range(['2015-10-01 23:33', '2015-10-04']),
         range2: moment.range(['2015-10-03', '2015-10-07'])
