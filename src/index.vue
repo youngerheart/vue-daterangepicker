@@ -7,7 +7,7 @@
     props: ['lang', 'numberOfCalendars', 'type', 'time', 'date', 'range', 'minDate', 'maxDate', 'onSelect', 'shortcuts', 'dimension', 'calendarType'],
     data() {
       return {
-        drp: null
+        drp: {calendar: {}}
       };
     },
     watch: {
@@ -24,7 +24,7 @@
         }
       },
       'drp.calendar.type'(value) {
-        this.calendarType = value;
+        if(this.drp) this.calendarType = value;
       }
     },
     ready() {

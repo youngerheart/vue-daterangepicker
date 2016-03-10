@@ -1,6 +1,6 @@
 {
   "name": "vue-daterangepicker",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "a simple daterangepicker for vue",
   "main": "dist/vue-daterangepicker.min.js",
   "scripts": {
