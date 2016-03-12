@@ -7,7 +7,7 @@
     props: ['lang', 'numberOfCalendars', 'type', 'time', 'date', 'range', 'minDate', 'maxDate', 'onSelect', 'shortcuts', 'dimension', 'calendarType'],
     data() {
       return {
-        drp: {calendar: {}}
+        drp: {calendar: {}},
       };
     },
     watch: {
@@ -25,6 +25,18 @@
       },
       'drp.calendar.type'(value) {
         if(this.drp) this.calendarType = value;
+      },
+      maxDate(value) {
+        if(value && this.drp.dimension) {
+          this.drp.calendar.maxDate = value;
+          this.drp.dimension.refresh(this.drp, this.drp.type);
+        }
+      },
+      minDate(value) {
+        if(value) {
+          this.drp.calendar.minDate = value;
+          this.drp.dimension.refresh(this.drp, this.drp.type);
+        }
       }
     },
     ready() {
