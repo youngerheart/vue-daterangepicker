@@ -1,6 +1,6 @@
 {
   "name": "vue-daterangepicker",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "a simple daterangepicker for vue",
   "main": "dist/vue-daterangepicker.min.js",
   "scripts": {
@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/youngerheart/vue-daterangepicker",
   "devDependencies": {
-    "date-range-picker": "^0.3.0",
+    "date-range-picker": "^0.3.3",
     "babel-core": "^6.1.2",
     "babel-loader": "^6.1.0",
     "eslint-loader": "1.1.1",
