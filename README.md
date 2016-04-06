@@ -21,7 +21,7 @@ This component relies on moment and moment-range, so you should include them fir
 
       $ npm install vue-daterangepicker
 
-Include js in `/dist` by tag , you can also require js by `require('date-range-picker')`
+Include js in `/dist` by tag , you can also require js by `require('vue-daterangepicker')`
 
       // You should init the VueDateRangePicker (with a prefix)
       VueDateRangePicker(Vue, 'v');
